@@ -31,8 +31,10 @@ class _LoginPageState extends State<LoginPage> {
         title: Text("Login Page"),
       ),
       body: Container(
-        color: Colors.purple,
+        width: double.infinity,
+        color: Colors.purple.withOpacity(0.2),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text("codemobiles.com"),
             Text("codemobiles.com"),
