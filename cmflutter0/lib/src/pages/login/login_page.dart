@@ -8,8 +8,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _usernameController = TextEditingController();
 
-  final _usernameController  = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _usernameController.text = "admin";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +31,10 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(labelText: "Username"),
+              ),
+              ElevatedButton(
+                onPressed: () => print("CMDev: Login"),
+                child: Text("Login"),
               )
             ],
           ),
