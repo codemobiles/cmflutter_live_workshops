@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: InputDecoration(labelText: "Username"),
               ),
               ElevatedButton(
-                onPressed: () => print("CMDev: Login"),
+                onPressed: _handleClickLogin,
                 child: Text("Login"),
               )
             ],
@@ -41,5 +41,9 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void _handleClickLogin() {
+    print("CMDev: Login");
   }
 }
