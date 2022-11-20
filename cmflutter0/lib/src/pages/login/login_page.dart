@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,6 +8,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final _usernameController  = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,16 +19,16 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Container(
         width: double.infinity,
-        color: Colors.purple.withOpacity(0.2),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(child: Text("codemobiles.com"), color: Color(0xffffff00),),
-            Text("codemobiles.com"),
-            Text("codemobiles.com"),
-            Text("codemobiles.com"),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            children: [
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(labelText: "Username"),
+              )
+            ],
+          ),
         ),
       ),
     );
