@@ -9,11 +9,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
 
   @override
   void initState() {
     super.initState();
     _usernameController.text = "admin";
+    _passwordController.text = "1234";
   }
 
   @override
@@ -27,15 +30,19 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: const EdgeInsets.all(32),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(labelText: "Username"),
               ),
-              ElevatedButton(
-                onPressed: _handleClickLogin,
-                child: Text("Login"),
-              )
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(labelText: "Password"),
+              ),
+
+              SizedBox(height: 32,),
+              ..._buildButtons()
             ],
           ),
         ),
@@ -44,6 +51,23 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickLogin() {
-    print("CMDev: Login");
+    print("CMDev: Login (${_usernameController.text}) ");
+  }
+
+  void _handleClickReset() {
+    _usernameController.text = "";
+  }
+
+  _buildButtons() {
+    return [
+      ElevatedButton(
+        onPressed: _handleClickLogin,
+        child: Text("Login"),
+      ),
+      OutlinedButton(
+        onPressed: _handleClickReset,
+        child: Text("Reset"),
+      )
+    ];
   }
 }
