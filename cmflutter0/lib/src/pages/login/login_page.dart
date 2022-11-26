@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login Page"),
+        title: const Text("Login Page"),
       ),
       body: Container(
         width: double.infinity,
@@ -48,7 +48,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickLogin() {
-    print("CMDev: Login with ${_usernameController.text}, ${_passwordController.text} ");
+    print(
+        "CMDev: Login with ${_usernameController.text}, ${_passwordController.text} ");
   }
 
   void _handleClickReset() {
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
     return [
       ElevatedButton(
         onPressed: _handleClickLogin,
-        child: Text("Login"),
+        child: Text("SignIn"),
       ),
       OutlinedButton(
         onPressed: _handleClickReset,
