@@ -1,7 +1,14 @@
 part of 'login_bloc.dart';
 
-abstract class LoginState {
+class LoginState extends Equatable {
   final int count;
 
-  LoginState({required this.count});
+  const LoginState({this.count = 0});
+
+  LoginState copyWith({int? count}) {
+    return LoginState(count: count ?? this.count);
+  }
+
+  @override
+  List<Object?> get props => [count];
 }
