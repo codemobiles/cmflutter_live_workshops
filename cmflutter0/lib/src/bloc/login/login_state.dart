@@ -1,6 +1,7 @@
 part of 'login_bloc.dart';
 
-@immutable
-abstract class LoginState {}
+abstract class LoginState {
+  final int count;
 
-class LoginInitial extends LoginState {}
+  LoginState({required this.count});
+}
