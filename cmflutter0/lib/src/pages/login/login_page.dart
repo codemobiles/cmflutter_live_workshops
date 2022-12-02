@@ -11,6 +11,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  int _debugMessage = 0;
 
   @override
   void initState() {
@@ -31,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.all(32),
           child: Card(
             child: Container(
-              height: 370,
+              height: 470,
               padding: const EdgeInsets.all(32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                   ..._buildTextFields(),
                   SizedBox(height: 32),
                   ..._buildButtons(),
+                  Text("Debug: $_debugMessage")
                 ],
               ),
             ),
