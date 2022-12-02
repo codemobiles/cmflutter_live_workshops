@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     children: [
                       Text("Debug: $count"),
+                      // separation of concern
                       IconButton(
                         onPressed: _handleClickAdd,
                         icon: Icon(Icons.add),
