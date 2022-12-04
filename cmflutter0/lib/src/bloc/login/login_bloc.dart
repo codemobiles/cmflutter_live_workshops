@@ -26,8 +26,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     // Login
     on<LoginEventLogin>((event, emit) async {
       // execute something
-      
-      emit(state.copyWith(isAuthened: true));
+      if (event.payload.username == "admin" &&
+          event.payload.password == "1234") {
+        emit(state.copyWith(isAuthened: true));
+      } else {
+        emit(state.copyWith(isAuthened: false));
+      }
     });
   }
 }
