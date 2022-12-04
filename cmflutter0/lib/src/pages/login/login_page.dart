@@ -3,6 +3,8 @@ import 'package:cmflutter0/src/pages/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../models/user.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -76,12 +78,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickLogin() {
-    // print(
-    //     "CMDev: Login with ${_usernameController.text}, ${_passwordController.text} ");
-    Navigator.pushNamed(
-      context,
-      AppRoute.home,
+    final user = User(
+      username: _usernameController.text,
+      password: _passwordController.text,
     );
+    context.read<LoginBloc>().add(LoginEventLogin(user));
   }
 
   void _handleClickReset() {
