@@ -13,7 +13,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  int count = 0;
 
   @override
   void initState() {
@@ -24,7 +23,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login Page"),
@@ -45,14 +43,21 @@ class _LoginPageState extends State<LoginPage> {
                   ..._buildButtons(),
                   Row(
                     children: [
-                      Text("Debug: ${context.read<LoginBloc>().state.count}"),
+                      // Text("Debug: ${context.read<LoginBloc>().state.count}"),
                       // separation of concern
+                      BlocBuilder<LoginBloc, LoginState>(
+                        builder: (context, state) {
+                          return Text("DebugX: ${state.count}");
+                        },
+                      ),
                       IconButton(
-                        onPressed: _handleClickAdd,
+                        onPressed: () =>
+                            context.read<LoginBloc>().add(LoginEventAdd()),
                         icon: Icon(Icons.add),
                       ),
                       IconButton(
-                        onPressed: _handleClickRemove,
+                        onPressed: () =>
+                            context.read<LoginBloc>().add(LoginEventRemove()),
                         icon: Icon(Icons.remove),
                       )
                     ],
@@ -112,15 +117,5 @@ class _LoginPageState extends State<LoginPage> {
 
   void _handleClickRegister() {
     Navigator.pushNamed(context, AppRoute.register);
-  }
-
-  void _handleClickAdd() {
-    count++;
-    setState(() {});
-  }
-
-  void _handleClickRemove() {
-    count--;
-    setState(() {});
   }
 }
