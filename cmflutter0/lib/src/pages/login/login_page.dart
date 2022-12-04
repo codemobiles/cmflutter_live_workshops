@@ -49,7 +49,11 @@ class _LoginPageState extends State<LoginPage> {
                   BlocBuilder<LoginBloc, LoginState>(
                     builder: (context, state) {
                       return Text(
-                          "Login Result: ${state.isAuthened ? "Success" : "Error"}");
+                        "Login Result: ${state.isAuthened ? "Success" : "Error"}",
+                        style: TextStyle(
+                          color: state.isAuthened ? Colors.green : Colors.red,
+                        ),
+                      );
                     },
                   ),
                   SizedBox(height: 32),
