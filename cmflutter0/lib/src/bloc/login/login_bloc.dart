@@ -8,14 +8,16 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginState()) {
     // Add
-    on<LoginEventAdd>((event, emit) {
+    on<LoginEventAdd>((event, emit) async {
       // execute something
+      await Future.delayed(Duration(seconds: 1));
       emit(state.copyWith(count: state.count + 1));
     });
 
     // Remove
-    on<LoginEventRemove>((event, emit) {
+    on<LoginEventRemove>((event, emit) async {
       // execute something
+      await Future.delayed(Duration(seconds: 1));
       emit(state.copyWith(count: state.count - 1));
     });
   }
