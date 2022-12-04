@@ -1,5 +1,7 @@
+import 'package:cmflutter0/src/bloc/login/login_bloc.dart';
 import 'package:cmflutter0/src/pages/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login Page"),
@@ -42,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   ..._buildButtons(),
                   Row(
                     children: [
-                      Text("Debug: $count"),
+                      Text("Debug: ${context.read<LoginBloc>().state.count}"),
                       // separation of concern
                       IconButton(
                         onPressed: _handleClickAdd,
@@ -66,7 +69,10 @@ class _LoginPageState extends State<LoginPage> {
   void _handleClickLogin() {
     // print(
     //     "CMDev: Login with ${_usernameController.text}, ${_passwordController.text} ");
-    Navigator.pushNamed(context, AppRoute.home);
+    Navigator.pushNamed(
+      context,
+      AppRoute.home,
+    );
   }
 
   void _handleClickReset() {
