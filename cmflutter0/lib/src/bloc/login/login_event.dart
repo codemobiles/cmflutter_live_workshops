@@ -10,5 +10,6 @@ class LoginEventAdd extends LoginEvent {}
 class LoginEventRemove extends LoginEvent {}
 
 class LoginEventLogin extends LoginEvent {
-  final 
+  final User payload;
+  LoginEventLogin(this.payload);
 }
