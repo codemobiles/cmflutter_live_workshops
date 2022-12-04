@@ -46,6 +46,13 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   ..._buildTextFields(),
                   SizedBox(height: 32),
+                  BlocBuilder<LoginBloc, LoginState>(
+                    builder: (context, state) {
+                      return Text(
+                          "Login Result: ${state.isAuthened ? "Success" : "Error"}");
+                    },
+                  ),
+                  SizedBox(height: 32),
                   ..._buildButtons(),
                   Row(
                     children: [
