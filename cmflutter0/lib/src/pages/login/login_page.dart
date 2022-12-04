@@ -33,53 +33,55 @@ class _LoginPageState extends State<LoginPage> {
           },
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(2),
-          child: Card(
-            child: Container(
-              height: 600,
-              padding: const EdgeInsets.all(32),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ..._buildTextFields(),
-                  SizedBox(height: 32),
-                  BlocBuilder<LoginBloc, LoginState>(
-                    builder: (context, state) {
-                      return Text(
-                        "Login Result: ${state.isAuthened ? "Success" : "Error"}",
-                        style: TextStyle(
-                          color: state.isAuthened ? Colors.green : Colors.red,
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.all(2),
+            child: Card(
+              child: Container(
+                height: 600,
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ..._buildTextFields(),
+                    SizedBox(height: 32),
+                    BlocBuilder<LoginBloc, LoginState>(
+                      builder: (context, state) {
+                        return Text(
+                          "Login Result: ${state.isAuthened ? "Success" : "Error"}",
+                          style: TextStyle(
+                            color: state.isAuthened ? Colors.green : Colors.red,
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 32),
+                    ..._buildButtons(),
+                    Row(
+                      children: [
+                        // Text("Debug: ${context.read<LoginBloc>().state.count}"),
+                        // separation of concern
+                        BlocBuilder<LoginBloc, LoginState>(
+                          builder: (context, state) {
+                            return Text("DebugX: ${state.count}");
+                          },
                         ),
-                      );
-                    },
-                  ),
-                  SizedBox(height: 32),
-                  ..._buildButtons(),
-                  Row(
-                    children: [
-                      // Text("Debug: ${context.read<LoginBloc>().state.count}"),
-                      // separation of concern
-                      BlocBuilder<LoginBloc, LoginState>(
-                        builder: (context, state) {
-                          return Text("DebugX: ${state.count}");
-                        },
-                      ),
-                      IconButton(
-                        onPressed: () =>
-                            context.read<LoginBloc>().add(LoginEventAdd()),
-                        icon: Icon(Icons.add),
-                      ),
-                      IconButton(
-                        onPressed: () =>
-                            context.read<LoginBloc>().add(LoginEventRemove()),
-                        icon: Icon(Icons.remove),
-                      )
-                    ],
-                  )
-                ],
+                        IconButton(
+                          onPressed: () =>
+                              context.read<LoginBloc>().add(LoginEventAdd()),
+                          icon: Icon(Icons.add),
+                        ),
+                        IconButton(
+                          onPressed: () =>
+                              context.read<LoginBloc>().add(LoginEventRemove()),
+                          icon: Icon(Icons.remove),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
