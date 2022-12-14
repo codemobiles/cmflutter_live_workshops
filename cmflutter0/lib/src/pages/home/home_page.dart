@@ -22,10 +22,20 @@ class _HomePageState extends State<HomePage> {
         title: Text("HomePage"),
       ),
       body: Container(
-          child: Column(
-        children: [
-          ...[1, 2, 3, 4].map((e) => Text(e.toString()))
-        ],
+          child: FutureBuilder(
+        future: WebApiService().feed(),
+        builder: ((context, snapshot) {
+          if (snapshot.hasData == false) {
+            return Text("Loading...");
+          }
+
+          final youtubes = snapshot.data;
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [...youtubes!.map((e) => Text(e.title))],
+          );
+        }),
       )),
     );
   }
