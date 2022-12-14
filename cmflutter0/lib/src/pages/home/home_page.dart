@@ -21,9 +21,12 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("HomePage"),
       ),
-      body: Center(
-        child: Text("1234"),
-      ),
+      body: Container(
+          child: Column(
+        children: [
+          ...[1, 2, 3, 4].map((e) => Text(e.toString()))
+        ],
+      )),
     );
   }
 }
