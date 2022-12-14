@@ -41,14 +41,17 @@ class _HomePageState extends State<HomePage> {
           return ListView.builder(
             itemCount: youtubes!.length,
             itemBuilder: ((context, index) {
-              return Card(
-                margin: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(youtubes![index].title),
-                    Text(youtubes![index].subtitle),
-                  ],
+              return TextButton(
+                onPressed: () => print(youtubes![index].title),
+                child: Card(
+                  margin: EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(youtubes![index].title),
+                      Image.network(youtubes![index].youtubeImage)
+                    ],
+                  ),
                 ),
               );
             }),
