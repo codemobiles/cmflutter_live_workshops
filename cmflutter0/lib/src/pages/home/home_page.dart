@@ -31,9 +31,27 @@ class _HomePageState extends State<HomePage> {
 
           final youtubes = snapshot.data;
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [...youtubes!.map((e) => Text(e.title))],
+          // Low Performance
+          // return Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [...youtubes!.map((e) => Text(e.title))],
+          // );
+
+          // Better Performance
+          return ListView.builder(
+            itemCount: youtubes!.length,
+            itemBuilder: ((context, index) {
+              return Card(
+                margin: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(youtubes![index].title),
+                    Text(youtubes![index].subtitle),
+                  ],
+                ),
+              );
+            }),
           );
         }),
       )),
