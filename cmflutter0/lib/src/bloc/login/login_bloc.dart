@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cmflutter0/src/app.dart';
 import 'package:cmflutter0/src/pages/routes.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       if (event.payload.username == "admin" &&
           event.payload.password == "1234") {
         emit(state.copyWith(isAuthened: true));
-        Navigator.pushReplacementNamed(context, AppRoute.home);
+        if (navigatorState.currentContext != null) {
+          Navigator.pushReplacementNamed(
+            navigatorState.currentContext!,
+            AppRoute.home,
+          );
+        }
       } else {
         emit(state.copyWith(isAuthened: false));
       }
